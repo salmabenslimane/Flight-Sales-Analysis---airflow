@@ -3,8 +3,12 @@ import pandas as pd
 from db_connection import get_connection
 import io
 
+import os
+from dotenv import load_dotenv  
 
-API_URL = "https://api.mockaroo.com/api/8be1cbb0?count=1000&key=e5432ea0"
+load_dotenv()
+
+API_URL = os.getenv("API_URL")
 
 
 def fetch_data():
