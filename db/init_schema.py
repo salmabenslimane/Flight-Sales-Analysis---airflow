@@ -3,20 +3,21 @@ from db_connection import get_connection
 def create_schema():
 
     conn = get_connection()
+    conn.execute("CREATE SCHEMA IF NOT EXISTS raw;")
     conn.execute("""
-        CREATE TABLE IF NOT EXISTS bookings (
-            Booking_ID INTEGER,
-            Booking_Date DATE,
-            Flight_Date DATE,
-            Passenger_ID INTEGER,
+        CREATE TABLE IF NOT EXISTS raw.bookings (
+            Booking_ID VARCHAR,
+            Booking_Date TIMESTAMP,
+            Flight_ID VARCHAR,
+            Passenger_ID VARCHAR,
             Passenger_Name VARCHAR,
             Email VARCHAR,
             Gender VARCHAR,
-            Country_Code VARCHAR,
             Ticket_Class VARCHAR,
             Quantity INTEGER,
             Unit_Price DOUBLE,
-            Revenue DOUBLE
+            Revenue DOUBLE,
+            load_date DATE DEFAULT CURRENT_DATE
         );
     """)
     conn.close()
