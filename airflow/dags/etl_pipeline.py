@@ -16,7 +16,7 @@ with DAG(
     dag_id='etl_pipeline',
     default_args=default_args,
     description='ETL pipeline to load and process flight sales data using DuckDB',
-    schedule=None,  # Manual trigger for now
+    schedule='@daily',
     start_date=datetime(2025, 11, 1),
     catchup=False,
     tags=['duckdb', 'etl', 'flight-sales'],
